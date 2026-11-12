@@ -1,0 +1,9 @@
+# 全仓库统一 LF：本机 core.autocrlf=true 会把 md/js 转成 CRLF，
+# 那既会污染 diff，也违反「md 一律 UTF-8 无 BOM + LF」的项目约定。
+* text=auto eol=lf
+
+# 二进制，不做换行转换
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
