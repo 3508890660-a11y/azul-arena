@@ -1,0 +1,17 @@
+# 依赖
+node_modules/
+
+# 运行时产物
+*.log
+state.json
+server.log
+
+# 截图临时文件（正式截图 screenshot-*.png 会被提交）
+shot-*.png
+.shot-profile/
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

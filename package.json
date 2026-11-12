@@ -1,0 +1,22 @@
+{
+  "name": "azul-arena",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "《花砖物语》(Azul) 脚本对局观战模拟器：脚本代打、多路观战、AI 可插拔",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test tests/engine.test.mjs",
+    "list": "node cli.mjs --list",
+    "bench": "node cli.mjs --games 20",
+    "bench:2p": "node cli.mjs --games 20 --players 2",
+    "check": "node tools/check-agent.mjs",
+    "rr2": "node tools/roundrobin.mjs --players 2 --games 12",
+    "rr3": "node tools/roundrobin.mjs --players 3 --games 12",
+    "rr4": "node tools/roundrobin.mjs --players 4 --games 40",
+    "roster": "node tools/gen-roster.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>花砖物语 · 观战台</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23101218'/><circle cx='11' cy='11' r='5' fill='%234a9fe0'/><circle cx='21' cy='11' r='5' fill='%23f2c94c'/><circle cx='11' cy='21' r='5' fill='%23e05a4a'/><circle cx='21' cy='21' r='5' fill='%23fdfbf3'/></svg>" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark"></span>
+    <div>
+      <h1>花砖物语</h1>
+      <p>Azul · 脚本对局观战台</p>
+    </div>
+  </div>
+
+  <div class="hud" id="hud">
+    <div class="hud-item"><span class="hud-label">轮次</span><strong id="hud-round">—</strong></div>
+    <div class="hud-item"><span class="hud-label">阶段</span><strong id="hud-phase">—</strong></div>
+    <div class="hud-item"><span class="hud-label">袋中</span><strong id="hud-bag">—</strong></div>
+    <div class="hud-item"><span class="hud-label">盒盖</span><strong id="hud-discard">—</strong></div>
+  </div>
+
+  <div class="controls">
+    <button id="btn-setup" class="btn btn-ghost" type="button">新对局</button>
+    <button id="btn-pause" class="btn" type="button">暂停</button>
+    <button id="btn-step" class="btn btn-ghost" type="button">单步</button>
+    <div class="speed">
+      <span>速度</span>
+      <select id="speed-select">
+        <option value="0.5">0.5×</option>
+        <option value="1" selected>1×</option>
+        <option value="2">2×</option>
+        <option value="4">4×</option>
+        <option value="8">8×</option>
+        <option value="99">瞬时</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<main class="stage">
+
+  <section class="table-side">
+    <div class="ring" id="ring">
+      <div class="center-disc" id="center-disc">
+        <div class="center-label">
+          <span>中央区</span>
+          <em id="center-count">0</em>
+        </div>
+        <div class="center-tiles" id="center-tiles"></div>
+      </div>
+    </div>
+    <p class="table-hint" id="table-hint">等待开局…</p>
+  </section>
+
+  <section class="boards" id="boards"></section>
+
+</main>
+
+<footer class="logpanel">
+  <div class="log-head">
+    <span>对局记录</span>
+    <span class="log-meta" id="log-meta"></span>
+  </div>
+  <div class="log" id="log"></div>
+</footer>
+
+<div class="toast" id="toast" hidden></div>
+
+<dialog id="setup-dialog">
+  <form method="dialog" class="setup-form" id="setup-form">
+    <h2>新对局</h2>
+
+    <label class="field">
+      <span>人数</span>
+      <div class="seg" id="seg-players">
+        <button type="button" data-count="2">2 人</button>
+        <button type="button" data-count="3">3 人</button>
+        <button type="button" data-count="4" class="active">4 人</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>种子<em>留空则随机</em></span>
+      <input id="seed-input" type="number" min="1" placeholder="随机" />
+    </label>
+
+    <div class="seats" id="seat-pickers"></div>
+
+    <menu>
+      <button value="cancel" class="btn btn-ghost" type="submit">取消</button>
+      <button value="start" class="btn btn-primary" type="submit">开始对局</button>
+    </menu>
+  </form>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

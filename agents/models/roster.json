@@ -1,0 +1,279 @@
+{
+  "title": "azul-arena · 12 模型对战脚本清单",
+  "round": "model-forge-2026-11-12",
+  "contract": "agents/models/_CONTRACT.md",
+  "interface": "export default { id, name, tag, model, modes, strategy, description, create(ctx) { return { chooseMove(view, moves) } } }",
+  "isolation": "每个脚本单文件自包含，不 import 其它文件；跑在独立 worker_threads，900ms 超时即判弃权",
+  "modeCounts": {
+    "2": 4,
+    "3": 4,
+    "4": 4
+  },
+  "recordSource": "tools/roundrobin.mjs：2 人 36 局、3 人 36 局、4 人 40 局，座位逐局轮换",
+  "agents": [
+    {
+      "model": "hy3",
+      "modelId": "hy3",
+      "id": "hy3",
+      "name": "锁喉手",
+      "strategy": "先手锁喉",
+      "tag": "专精",
+      "modes": [
+        2
+      ],
+      "file": "agents/models/hy3.mjs",
+      "bytes": 7777,
+      "lines": 197,
+      "description": "2人局专攻回合控制：抢起始标记保先手，断供对手并严控地板罚分。",
+      "record": {
+        "games": 36,
+        "wins": 22,
+        "avgScore": 52.1,
+        "avgRank": 1.39,
+        "winRate": 61
+      }
+    },
+    {
+      "model": "GLM5.3flash",
+      "modelId": "glm-5.3-flash",
+      "id": "glm53flash",
+      "name": "疾风快墙",
+      "strategy": "速攻终局",
+      "tag": "专精",
+      "modes": [
+        2
+      ],
+      "file": "agents/models/glm53flash.mjs",
+      "bytes": 6244,
+      "lines": 181,
+      "description": "以最短图案行最快上墙压缩轮次，抢断对手急需砖色，严控地板罚分；领先或对手未铺开时果断补满整行触发终局。",
+      "record": {
+        "games": 36,
+        "wins": 19,
+        "avgScore": 53.9,
+        "avgRank": 1.47,
+        "winRate": 53
+      }
+    },
+    {
+      "model": "hy4",
+      "modelId": "hy4std",
+      "id": "hy4",
+      "name": "粒粒归仓",
+      "strategy": "零溢效率流",
+      "tag": "专精",
+      "modes": [
+        2
+      ],
+      "file": "agents/models/hy4.mjs",
+      "bytes": 5376,
+      "lines": 143,
+      "description": "两人局极简效率流：算清取砖数与行容量，零溢出、避地板，短行快速上墙，浅地板时抢先手断供，宁可少取绝不浪费。",
+      "record": {
+        "games": 36,
+        "wins": 16,
+        "avgScore": 56.4,
+        "avgRank": 1.56,
+        "winRate": 44
+      }
+    },
+    {
+      "model": "GLM5.3",
+      "modelId": "glm-5.3",
+      "id": "glm53",
+      "name": "垄断者",
+      "strategy": "颜色垄断",
+      "tag": "专精",
+      "modes": [
+        2
+      ],
+      "file": "agents/models/glm53.mjs",
+      "bytes": 9700,
+      "lines": 225,
+      "description": "两人局砖源极稀缺：锁定两三种专精色，铺墙集色的同时吃干场上该色，断对手供给。",
+      "record": {
+        "games": 36,
+        "wins": 15,
+        "avgScore": 51.5,
+        "avgRank": 1.58,
+        "winRate": 42
+      }
+    },
+    {
+      "model": "MiniMax M3.1flash",
+      "modelId": "minimax-m3.1-flash",
+      "id": "minimaxm31flash",
+      "name": "地板铁砧",
+      "strategy": "地板压制",
+      "tag": "专精",
+      "modes": [
+        3
+      ],
+      "file": "agents/models/minimaxm31flash.mjs",
+      "bytes": 31742,
+      "lines": 786,
+      "description": "3 人局专攻地板压制：抽走对手图案行的配套色断其补齐，把无家可归的砖逼他吃下，自己死守地板不踩 -3，锁列追终局奖励。",
+      "record": {
+        "games": 36,
+        "wins": 22,
+        "avgScore": 61.9,
+        "avgRank": 1.53,
+        "winRate": 61
+      }
+    },
+    {
+      "model": "KIMI 2.8preview",
+      "modelId": "kimi-k2.8-preview",
+      "id": "kimi28preview",
+      "name": "拾荒猎手",
+      "strategy": "嗅探捡漏",
+      "tag": "专精",
+      "modes": [
+        3
+      ],
+      "file": "agents/models/kimi28preview.mjs",
+      "bytes": 10776,
+      "lines": 304,
+      "description": "三人局机会主义：嗅探布局/抢分/收尾三期动态换权重，盯最危险对手的补行信号切阻断，专捡中央区大份同色漏。",
+      "record": {
+        "games": 36,
+        "wins": 15,
+        "avgScore": 56.8,
+        "avgRank": 1.89,
+        "winRate": 42
+      }
+    },
+    {
+      "model": "KIMI 3.1pro",
+      "modelId": "kimi-k3.1-pro",
+      "id": "kimi31pro",
+      "name": "双轨织墙",
+      "strategy": "双线交叉",
+      "tag": "专精",
+      "modes": [
+        3
+      ],
+      "file": "agents/models/kimi31pro.mjs",
+      "bytes": 10008,
+      "lines": 268,
+      "description": "长期锁定双列与双行，优先抢占交叉砖位，并按最危险对手实施定向断供与中央控制。",
+      "record": {
+        "games": 36,
+        "wins": 7,
+        "avgScore": 51.4,
+        "avgRank": 2.17,
+        "winRate": 19
+      }
+    },
+    {
+      "model": "MiniMax M3",
+      "modelId": "minimax-m3-pay",
+      "id": "minimaxm3",
+      "name": "三线平衡手",
+      "strategy": "中线平衡",
+      "tag": "专精",
+      "modes": [
+        3
+      ],
+      "file": "agents/models/minimaxm3.mjs",
+      "bytes": 10788,
+      "lines": 247,
+      "description": "3人局专用：即时得分、终局布局、断供对手三条线显式加权，按分差动态调权，落后抢分断供，领先压地板防喂色。",
+      "record": {
+        "games": 36,
+        "wins": 4,
+        "avgScore": 47.6,
+        "avgRank": 2.42,
+        "winRate": 11
+      }
+    },
+    {
+      "model": "MIMO-v2.6-pro",
+      "modelId": "mimo-v2.6-pro",
+      "id": "mimov26pro",
+      "name": "绊脚砖",
+      "strategy": "反制搅局流",
+      "tag": "专精",
+      "modes": [
+        4
+      ],
+      "file": "agents/models/mimov26pro.mjs",
+      "bytes": 14966,
+      "lines": 363,
+      "description": "四人局反制专家：按危险度锁定领先者，抢其待补之色、以死色污染中央；自己领先即转保守布局，兼顾终局行列色奖励。",
+      "record": {
+        "games": 40,
+        "wins": 16,
+        "avgScore": 64.8,
+        "avgRank": 2.15,
+        "winRate": 40
+      }
+    },
+    {
+      "model": "deepseek v4.1flash",
+      "modelId": "deepseek-v4.1-flash",
+      "id": "deepseekv41flash",
+      "name": "终局账房",
+      "strategy": "终局收割",
+      "tag": "专精",
+      "modes": [
+        4
+      ],
+      "file": "agents/models/deepseekv41flash.mjs",
+      "bytes": 17340,
+      "lines": 484,
+      "description": "四人局布局流：开局锁定两列一色，每步核算离 +7/+10 还差几格，肯为终局奖励吃地板、让小上墙，末轮全力收割。",
+      "record": {
+        "games": 40,
+        "wins": 11,
+        "avgScore": 62.4,
+        "avgRank": 2.35,
+        "winRate": 28
+      }
+    },
+    {
+      "model": "step5preview",
+      "modelId": "step-5-preview",
+      "id": "step5preview",
+      "name": "控流士",
+      "strategy": "节奏控制",
+      "tag": "专精",
+      "modes": [
+        4
+      ],
+      "file": "agents/models/step5preview.mjs",
+      "bytes": 11377,
+      "lines": 276,
+      "description": "四人局专精：每手先估算本轮剩余手数，轮初激进抢工厂、短行快变现追终局连击，轮末保守小口取砖拖轮，留垃圾砖在中央区逼三对手吃地板。",
+      "record": {
+        "games": 40,
+        "wins": 9,
+        "avgScore": 61,
+        "avgRank": 2.52,
+        "winRate": 23
+      }
+    },
+    {
+      "model": "deepseek v4pro",
+      "modelId": "deepseek-v4-pro",
+      "id": "deepseekv4pro",
+      "name": "全局谋士",
+      "strategy": "全局估值",
+      "tag": "专精",
+      "modes": [
+        4
+      ],
+      "file": "agents/models/deepseekv4pro.mjs",
+      "bytes": 10713,
+      "lines": 279,
+      "description": "四人局全局估值：每手拆成上墙即时分、未来上墙概率乘终局奖励份额、地板扣分与阻塞收益，重列重色、控溢出、抢先手。",
+      "record": {
+        "games": 40,
+        "wins": 4,
+        "avgScore": 57.3,
+        "avgRank": 2.98,
+        "winRate": 10
+      }
+    }
+  ]
+}
