@@ -374,6 +374,8 @@ node.style.top  = `${50 + Math.sin(angle) * radius}%`;
 azul-arena/
 ├── server.mjs              HTTP + SSE 观战服务
 ├── cli.mjs                 批量对局 / 单局复盘
+├── package.json            零依赖，只有 scripts 入口
+├── LICENSE                 MIT
 ├── index.html              观战界面骨架
 ├── styles.css              深色陶土质感样式
 ├── app.js                  渲染 + 控制
