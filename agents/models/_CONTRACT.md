@@ -7,8 +7,10 @@
 ## 1. 文件位置
 
 ```
-F:/producing/game/azul-arena/agents/models/<你的 id>.mjs
+agents/models/<你的 id>.mjs
 ```
+
+（路径相对仓库根目录。）
 
 单文件、自包含：**不要 import 任何其它文件**（包括同目录的 `_lib.mjs`）。所有工具函数自己写在这个文件里。
 
@@ -140,9 +142,9 @@ export default {
 
 ## 8. 自检（写完必须跑）
 
+在仓库根目录下：
+
 ```bash
-export PATH="/c/Users/张涵/.workbuddy/binaries/PortableGit/versions/1.2.0/usr/bin:/usr/bin:/bin:$PATH"
-cd "F:/producing/game/azul-arena"
 node --check agents/models/<id>.mjs
 node tools/check-agent.mjs agents/models/<id>.mjs <你负责的人数>
 ```
